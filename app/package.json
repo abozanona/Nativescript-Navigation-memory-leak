@@ -1,0 +1,19 @@
+{
+    "android": {
+        "v8Flags": "--expose_gc",
+        "forceLog": true,
+        "markingMode": "none",
+        "gcThrottleTime": 500,
+        "memoryCheckInterval": 500,
+        "freeMemoryRatio": 0.50
+    },
+    "ios": {
+        "jscFlags": "--dumpOptions=3 --validateOptions=1",
+        "gcThrottleTime": 5000,
+        "memoryCheckInterval": 500,
+        "freeMemoryRatio": 0.50
+    },
+    "main": "app.js",
+    "name": "tns-template-blank",
+    "version": "3.1.1"
+}

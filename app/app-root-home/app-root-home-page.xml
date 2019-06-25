@@ -1,0 +1,9 @@
+<StackLayout>
+    <AbsoluteLayout height="100%">
+        <GridLayout rows="auto, *, auto" left="0" top="0" width="100%" height="100%">
+            <Frame row="0" rowSpan="2" id="topmost" defaultPage="home/home-page"></Frame>
+            <image loadMode="async" id="imgBanner" width="100%" row="2" stretch="aspectFit"/>
+            <Label visibility="collapse" row="0" id="connectionText" class="lbl-connected" text="أنت الآن غير متصل بالإنترنت"/>
+        </GridLayout>
+    </AbsoluteLayout>
+</StackLayout>

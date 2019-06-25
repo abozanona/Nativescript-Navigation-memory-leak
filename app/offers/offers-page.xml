@@ -1,0 +1,39 @@
+<Page navigatingTo="onNavigatingTo" class="page"
+    xmlns="http://schemas.nativescript.org/tns.xsd" >
+	<ActionBar title="Offers" class="action-bar offers-action-bar">
+        <NavigationButton ios:visibility="collapsed"></NavigationButton>
+        <WrapLayout>
+			<DockLayout>
+				<image loadMode="async" tap="{{backButton_click}}" dock="left"
+					src="res://btn_back" />
+				<Label dock="right" />
+				<StackLayout dock="bottom" verticalAlignment="center" horizontalAlignment="center">
+					<Label text="عروض" />
+				</StackLayout>
+			</DockLayout>
+		</WrapLayout>
+	</ActionBar>
+
+    <ScrollView>
+        <StackLayout class="home-panel" height="100%" iosOverflowSafeArea="false">
+            <GridLayout rows="*" height="100%">
+                <ListView id="lsvOffers" row="0" class="list-group" items="{{ offers }}" loadMoreItems="{{loadMoreItems}}" itemTap="{{search_tap}}" height="100%">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="auto,*" rows="*" class="offers-container">
+                            <image loadMode="async" row="0" col="0" src="{{imageUrl}}" class="offers-image" />
+                            <StackLayout marginRight="10" marginLeft="10" marginTop="10" row="0" col="1">
+                                <StackLayout class="offer-title">
+                                    <Label text="{{title}}" textWrap="true" />
+                                </StackLayout>
+                                <Label text="{{description}}" textWrap="true" style="text-align:right;font-size:10" />
+                            </StackLayout>
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+                <StackLayout id="ltyEmptyContent" visibility="collapse" row="0" height="100%" verticalAlignment="center" horizontalAlignment="center">
+                    <Label text="لا توجد لديك عروض حالياً"/>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

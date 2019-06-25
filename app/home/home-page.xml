@@ -1,0 +1,173 @@
+<Page loaded="pageLoaded" class="page" xmlns="http://www.nativescript.org/tns.xsd" xmlns:ns="nativescript-carousel">
+    <ActionBar title="Login" class="action-bar customer-action-bar">
+        <NavigationButton ios:visibility="collapsed"></NavigationButton>
+        <WrapLayout>
+            <DockLayout>
+                <image loadMode="async" tap="{{btnToggleSideMenu_click}}" dock="left"
+                    src="res://icon_main_manu" />
+                <image loadMode="async" id="icon_show_notifications" tap="{{icon_show_notifications_click}}" marginRight="7" dock="right" src="res://icon_show_notifications" />
+                <image loadMode="async" width="238px" android:height="90px" ios:height="70px" dock="bottom"
+                    src="res://icon_logo" />
+            </DockLayout>
+        </WrapLayout>
+    </ActionBar>
+
+    <GridLayout rows="*">
+        <ScrollView row="0">
+            <StackLayout class="home-panel" iosOverflowSafeArea="false">
+                <StackLayout class="profile-header">
+                    <StackLayout margin="6,30,10,50" width="100%">
+                        <GridLayout id="lytProfile" rows="*, *" width="100%">
+                            <AbsoluteLayout row="0" orientation="vertical">
+                                <Label zIndex="50" row="0" paddingRight="6" tap="{{ navigateToProfile }}" id="lblUserName" class="profile-picture-user-name" />
+                                <image loadMode="async" id="imgProfile" zIndex="100" tap="{{ navigateToProfile }}" stretch="aspectFill" class="profile-picture-background rounded-image" />
+                            </AbsoluteLayout>
+                            <StackLayout margin="-17,10,0,-50" row="1" col="0" style="width:100%;">
+                                <GridLayout margin="6,0,0" columns="*,*,*,*,*" width="100%">
+                                    <AbsoluteLayout col="1" colSpan="2" height='100%'>
+                                        <StackLayout width='100%' hieght='100%'
+                                            left='0' top='0' verticalAlignment="center">
+                                            <Label marginTop="20" text="القيمة&#xA;الشرائية" textWrap="true"/>
+                                        </StackLayout>
+                                        <GridLayout rows="*" class="text-left">
+                                            <image loadMode="async" row="0" src='res://icon_moneybox'
+                                                width="100" height="100" />
+                                            <FlexboxLayout justifyContent="center" alignItems="center" style="height:60;width:60;padding-top:20">
+                                                <Label row="0" style="color:white;" id="lblPointsValue"/>
+                                            </FlexboxLayout>
+                                        </GridLayout>
+                                    </AbsoluteLayout>
+                                    <AbsoluteLayout col="3" colSpan="2" height='100%'>
+                                        <StackLayout width='100%' hieght='100%'
+                                            left='0' top='0' verticalAlignment="center">
+                                            <Label marginTop="20" text="عدد&#xA;النقاط" textWrap="true"/>
+                                        </StackLayout>
+                                        <GridLayout rows="*">
+                                            <image loadMode="async" row="0" src='res://icon_pointsbox'
+                                                width="100" height="100" />
+                                            <FlexboxLayout justifyContent="center" alignItems="center" style="height:60;width:60;padding-top:20">
+                                                <Label row="0" style="color:white;" id="lblPointsNumber"/>
+                                            </FlexboxLayout>
+                                        </GridLayout>
+                                    </AbsoluteLayout>
+                                </GridLayout>
+                            </StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+                </StackLayout>
+                <FlexboxLayout flexDirection="row" justifyContent="space-between" class="hot-menu">
+                    <StackLayout id="lytUsePoints" tap="{{lytUsePoints_click}}" style="width:20%">
+                        <image loadMode="async" src="res://icon_use_your_points" style="height:47"/>
+                        <Label textWrap="true" text="استخدم نقاطك" />
+                    </StackLayout>
+                    <StackLayout id="lytSearch" tap="{{lytSearch_click}}" style="width:20%">
+                        <image loadMode="async" src="res://icon_what_on_your_mind" style="height:47"/>
+                        <Label textWrap="true" text="شو ع بالك اليوم" />
+                    </StackLayout>
+                    <StackLayout id="lytHistory" tap="{{lytHistory_click}}" style="width:20%">
+                        <image loadMode="async" src="res://icon_your_actions" style="height:47"/>
+                        <Label textWrap="true" text="حركاتك" />
+                    </StackLayout>
+                    <StackLayout id="lytOffers" tap="{{lytOffers_click}}" style="width:20%">
+                        <image loadMode="async" src="res://icon_hot_deals" style="height:47"/>
+                        <Label textWrap="true" text="عروض" />
+                    </StackLayout>
+                </FlexboxLayout>
+                <GridLayout columns="*" rows="*" width="100%" height="200">
+                    <!-- <ns:Carousel autoPagingInterval="7" id="crlAds" pageChanged="{{myChangeEvent}}" tap="{{ lstGeneralAds_tap }}" items="{{ lstGeneralAds }}" height="100%" width="100%" color="white" android:indicatorAnimation="slide"  indicatorColor="#fff" indicatorOffset="0,0" showIndicator="true">
+                        <ns:Carousel.itemTemplate>
+                            <ns:CarouselItem verticalAlignment="middle">
+                                <GridLayout>
+                                    <image loadMode="async" class="carosel-image" src="{{ imageUrl }}" stretch="aspectFit" />
+                                </GridLayout>
+                            </ns:CarouselItem>
+                        </ns:Carousel.itemTemplate>
+                    </ns:Carousel> -->
+                </GridLayout>
+                <StackLayout horizontalAlignment="center" class="btn-show-barcode" tap="{{show_qr_bar_lyt_click}}">
+                    <WrapLayout orientation="horizontal">
+                        <Label text="أظهر الباركود"  style="text-align:center;font-size:25" />
+                        <Label text="&#xf029;"       class="fa" style="text-align:center;font-size:25"/>
+                    </WrapLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        <GridLayout id="lytPopup" tap="{{lytPopup_tap}}" row="0" class="side-menu bg-overlay hidden" rows="*,auto,*" isHidden="true">
+            <StackLayout row="0" tap="{{btnToggleSideMenu_click}}">
+            </StackLayout>
+            <StackLayout row="1">
+                <Label class="h1 text-white" text="القائمة الجانبية" textAlignment="center" width="100%" />
+                <FlexboxLayout justifyContent="center" flexWrap="wrap" class="flex-row overlay-menu">
+                    <StackLayout id="btn_side_menu_help" tap="{{btn_side_menu_help_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_help" />
+                        <Label text="مساعدة" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_my_profile" tap="{{btn_side_menu_my_profile_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_my_profile" />
+                        <Label text="حسابي" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_who_are_we" tap="{{btn_side_menu_who_are_we_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_who_are_we" />
+                        <Label text="من نحن" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_share" tap="{{btn_side_menu_share_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_share" />
+                        <Label text="مشاركة" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_notifications" tap="{{btn_side_menu_notifications_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_notifications" />
+                        <Label text="الإشعارات" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_my_transactions" tap="{{btn_side_menu_my_transactions_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_my_transactions" />
+                        <Label text="حركاتي" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_use_points" tap="{{btn_side_menu_use_points_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_use_points" />
+                        <Label text="استخدم&#xA;نقاطك" textWrap="true" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_shared_stores" tap="{{btn_side_menu_shared_stores_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_shared_stores" />
+                        <Label text="متاجر&#xA;مشاركة" textWrap="true" style="text-align:center;" />
+                    </StackLayout>
+                    <StackLayout id="btn_side_menu_how_much_savings" tap="{{btn_side_menu_how_much_savings_click}}" width="21%" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_how_much_savings" />
+                        <Label text="كم وفرت" style="text-align:center;" />
+                    </StackLayout>
+                </FlexboxLayout>
+            </StackLayout>
+            <StackLayout row="2" tap="{{btnToggleSideMenu_click}}">
+            </StackLayout>
+        </GridLayout>
+        <GridLayout id="lytPopup2" tap="{{lytPopup2_tap}}" row="0" rows="*,auto,*" class="side-menu bg-overlay hidden">
+            <StackLayout row="0" tap="{{btnToggleSideMenu_click}}">
+            </StackLayout>
+            <StackLayout row="1">
+                <Label class="h1 text-white" text="مساعدة" textAlignment="center" />
+                <FlexboxLayout justifyContent="space-around" flexWrap="wrap" class="flex-row overlay-menu">
+                    <StackLayout id="side_menu_faq" tap="{{side_menu_faq_click}}" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_faq" />
+                        <Label textWrap="true" text="استخدم تمصرف" class="text-center" />
+                    </StackLayout>
+                    <StackLayout id="side_menu_call_us" tap="{{side_menu_call_us_click}}" orientation="vertical" class="lyt-menu-icon">
+                        <image loadMode="async" width="60" height="60" src="res://side_menu_call_us" />
+                        <Label textWrap="true" text="اتصل بنا" class="text-center" />
+                    </StackLayout>
+                </FlexboxLayout>
+            </StackLayout>
+            <StackLayout row="2" tap="{{btnToggleSideMenu_click}}">
+            </StackLayout>
+        </GridLayout>
+        <StackLayout id="lytQRBar" tap="{{lytQRBar_tap}}" row="0" class="side-menu bg-overlay2 hidden" style="height:100%">
+            <StackLayout orientation="vertical" class="lyt-menu-icon" style="height:100%" verticalAlignment="center">
+                <GridLayout columns="*, *" rows="auto" class="lyt-qr-bar">
+                    <image loadMode="async" id="imgQRCode" row="0" col="0"/>
+                    <StackLayout row="0" col="1" verticalAlignment="center">
+                        <image loadMode="async" id="imgBarCode"/>
+                        <Label id="lblSerialNumber" style="font-size:20;color:white"/>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+    </GridLayout>
+</Page>
